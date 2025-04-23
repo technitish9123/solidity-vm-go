@@ -231,5 +231,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 **Note**: This project is for educational purposes and not intended for production use. The Solidity VM implementation is a simplified version of the Ethereum Virtual Machine and does not include all security features required for a production environment.
-
-Similar code found with 1 license type
