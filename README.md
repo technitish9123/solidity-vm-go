@@ -2,8 +2,33 @@
 
 A lightweight Ethereum-compatible virtual machine implementation for compiling and executing Solidity smart contracts in Go.
 
-![Solidity VM](https://www.mermaidchart.com/raw/7d2baf29-8eaf-4225-98a1-4ce11a7c3f77?theme=light&version=v0.1&format=svg)
+```mermaid
+flowchart TD
+ subgraph VM_Core["VM_Core"]
+        E["Opcode Execution Engine"]
+        D["Stack Machine"]
+        F["Memory Access_RAM"]
+        G["Storage Access_State Trie"]
+        H["Gas Metering Engine"]
+  end
+    A["Bytecode Input"] --> B["Bytecode Parser"]
+    B --> C["Opcode Dispatcher"]
+    C --> D & X["Precompiles"] & Y["System Calls"] & Z["External Calls"] & AA["Contract Creation"] & AB["Revert / Return"] & AC["Exception Handling"] & AD["Gas Limit Check"] & AE["State Access"]
+    D --> E
+    E --> F & G & H
+    G --> I["Storage Trie_MPT"]
+    F --> J["Memory_Byte Array"]
+    H --> K["Gas Remaining Check"]
+    K --> L["Out of Gas Exception Handler"] & N["Continue Execution"]
+    L --> M["Revert State Changes"]
+    N --> O["Return Value_Logs_Events"]
+    O --> P["Write to Receipts_State"]
 
+    style E stroke:#FF6D00,fill:#00C853,color:#FFFFFF
+    style F fill:#00C853
+    style H fill:#00C853
+    style VM_Core fill:#757575
+```
 ## Overview
 
 This project implements a simplified virtual machine capable of running Solidity smart contracts. It provides developers with insights into the inner workings of the Ethereum Virtual Machine (EVM) while offering a platform for testing and educational purposes.
